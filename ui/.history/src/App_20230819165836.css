@@ -14,7 +14,7 @@
 
 .custom-scroll::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   /* background-color: aquamarine; */
   transition: 300ms;
 }

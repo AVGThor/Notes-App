@@ -12,5 +12,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url(
-    "/public/sticky-note.jpg");
+    "public/sticky-note.jpg");
 }
