@@ -5,7 +5,7 @@ import plusIcon from "../../assets/plus.png";
 import "./Sidebar.css";
 
 function Sidebar(props) {
-  const colors = ["#dc143c", "#fe9b72", "#fec971", " #00d4fe", "#b693fd", "#e4ee91", "#d3ccff", "#cce6ff", "#6dc066", "#ffdf00", "#ffe6b3", "#f7e7ce", "#ffffff", "#6897bb", "#64c987"];
+  const colors = ["#dc143c", "#fe9b72", "#fec971", " #00d4fe", "#b693fd", "#e4ee91", "#d3ccff", "#cce6ff", "#6dc066", "#ffdf00", "#ffe6b3", "#f7e7ce", "#ffffff", "#6897bb", "#64c987","radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)""];
 
   const [listOpen, setListOpen] = useState(false);
 
