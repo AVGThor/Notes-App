@@ -26,11 +26,12 @@ function Note(props) {
       "12",
     ];
 
-    let hrs = date.getUTCHours();
-    // let hrs = date.getUTCHours()+7;
-    let amPm = hrs >= 12 ? "PM" : "AM";
+    // let hrs = date.getUTCHours();
+    let hrs = date.getHours();
+    let amPm =  hrs >= 12 ? "PM" : "AM";
+    // let amPm =  12 < hrs < 24 ? "AM" : "PM";
     hrs = hrs ? hrs : "12";
-    hrs = hrs > 12 ? (hrs = 24 - hrs + 3) : hrs + 3;
+    // hrs = hrs > 12 ? (hrs = 24 - hrs) : hrs;
 
     let min = date.getMinutes();
     min = min < 10 ? "0" + min : min;
