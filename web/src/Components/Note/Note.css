@@ -33,3 +33,7 @@
 .note:hover .note_footer img {
   opacity: 1;
 }
+
+.note1:hover img {
+  opacity: 1;
+}

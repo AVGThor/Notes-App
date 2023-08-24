@@ -1,7 +1,10 @@
 import React from "react";
 
 import deleteIcon from "../../assets/delete.svg";
-
+import start from "../../assets/start.svg";
+import stop from "../../assets/stop.svg";
+import clear from "../../assets/refresh.svg";
+import transcribe from "../../assets/transcribe.svg";
 import "./Note.css";
 // import { useReactMediaRecorder } from "react-media-recorder-2";
 
@@ -81,15 +84,20 @@ function Note(props) {
       <div>
         <p>{props.recordVoice.status}</p>
         {props.recordVoice.status == 'idle' && (
-          <button onClick={props.recordVoice.startRecording}>Start Recording</button>
+          // <button  onClick={props.recordVoice.startRecording}> <img src={start} alt="start_recording" /></button>
+          <img onClick={props.recordVoice.startRecording} src={start} alt="start_recording" />
         )}
         {props.recordVoice.status == 'recording' && (
-          <button onClick={props.recordVoice.stopRecording}>Stop Recording</button>
+          // <button onClick={props.recordVoice.stopRecording}><img src={stop} alt="stop_recording" /></button>
+          <img onClick={props.recordVoice.stopRecording} src={stop} alt="stop_recording" />
         )}
         {props.recordVoice.mediaBlobUrl ? <audio hidden src={props.recordVoice.mediaBlobUrl} controls /* autoPlay loop */ /> : <></>}
         {/* <audio src={props.recordVoice.mediaBlobUrl} controls /> */}
-        <button onClick={props.recordVoice.clearBlobUrl}>Clear</button>
-        <button onClick={() => props.handleSave()}>Transcribe</button>
+
+        {/* <button onClick={props.recordVoice.clearBlobUrl}><img src={clear} alt="clear" /></button> */}
+        {props.recordVoice.status === 'stopped' && (<img onClick={props.recordVoice.clearBlobUrl} src={clear} alt="clear" />)}
+        {/* <button onClick={() => props.handleSave()}><img src={transcribe} alt="transcribe" /></button> */}
+        <img onClick={() => props.handleSave()} src={transcribe} alt="transcribe" />
       </div>
     </div>
   );
