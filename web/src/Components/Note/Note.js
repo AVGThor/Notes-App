@@ -59,13 +59,14 @@ function Note(props) {
 
   return (
     <div className="note" style={{ backgroundColor: props.note.color }}>
-      <textarea
+      {/* <textarea
         className="note_text"
         defaultValue={props.note.text}
         onChange={(event) => updateText(event.target.value, props.note.id)}
-      />
+      /> */}
       <textarea
         className="note_text"
+        defaultValue1={props.note.text}
         defaultValue={props.output}
         onChange={(event) => updateText(event.target.value, props.note.id)}
       />
