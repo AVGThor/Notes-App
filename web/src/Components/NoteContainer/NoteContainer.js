@@ -28,6 +28,7 @@ function NoteContainer(props) {
               note={item}
               deleteNote={props.deleteNote}
               updateText={props.updateText}
+              updateRecordText={props.updateRecordText}
               recordVoice={props.recordVoice}
               output={props.output}
               handleSave={props.handleSave}

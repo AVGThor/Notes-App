@@ -56,22 +56,21 @@ function Note(props) {
     debounce(() => props.updateText(text, id));
   };
 
-  // const { status, startRecording, stopRecording, mediaBlobUrl, clearBlobUrl } = useReactMediaRecorder({ video: false });
-
-  // const recording = { status, startRecording, stopRecording, mediaBlobUrl, clearBlobUrl };
+  const handleSave = (text, id) => {
+    props.handleSave();
+    props.updateRecordText(text, id);
+  }
 
   return (
     <div className="note" style={{ backgroundColor: props.note.color }}>
-      {/* <textarea
+      <textarea
         className="note_text"
         defaultValue={props.note.text}
         onChange={(event) => updateText(event.target.value, props.note.id)}
-      /> */}
+      />
       <textarea
         className="note_text"
-        defaultValue1={props.note.text}
-        defaultValue={props.output}
-        onChange={(event) => updateText(event.target.value, props.note.id)}
+        defaultValue={props.note.recordText}
       />
       <div className="note_footer">
         <p>{formatDate(props.note.time)}</p>
@@ -81,24 +80,18 @@ function Note(props) {
           onClick={() => props.deleteNote(props.note.id)}
         />
       </div>
-      <div className = "note_footer1">
+      <div className="note_footer1">
         {/* <p hidden>{props.recordVoice.status}</p> */}
         {props.recordVoice.status === 'idle' && (
-          // <button  onClick={props.recordVoice.startRecording}> <img src={start} alt="start_recording" /></button>
-          <img style= {{marginRight:'10px'}} onClick={props.recordVoice.startRecording} src={start} alt="start_recording" />
+          <img style={{ marginRight: '10px' }} onClick={props.recordVoice.startRecording} src={start} alt="start_recording" />
         )}
         {props.recordVoice.status === 'recording' && (
-          // <button onClick={props.recordVoice.stopRecording}><img src={stop} alt="stop_recording" /></button>
-          <img style= {{marginRight:'10px'}} onClick={props.recordVoice.stopRecording} src={stop} alt="stop_recording" />
+          <img style={{ marginRight: '10px' }} onClick={props.recordVoice.stopRecording} src={stop} alt="stop_recording" />
         )}
         {props.recordVoice.mediaBlobUrl ? <audio hidden src={props.recordVoice.mediaBlobUrl} controls /* autoPlay loop */ /> : <></>}
-        {/* <audio src={props.recordVoice.mediaBlobUrl} controls /> */}
-
-        {/* <button onClick={props.recordVoice.clearBlobUrl}><img src={clear} alt="clear" /></button> */}
         {props.recordVoice.status === 'stopped' && (
-          <img style= {{marginRight:'10px'}} onClick={props.recordVoice.clearBlobUrl} src={clear} alt="clear" /> )}
-        {/* <button onClick={() => props.handleSave()}><img src={transcribe} alt="transcribe" /></button> */}
-        <img onClick={() => props.handleSave()} src={transcribe} alt="transcribe" /> 
+          <img style={{ marginRight: '10px' }} onClick={props.recordVoice.clearBlobUrl} src={clear} alt="clear" />)}
+        <img onClick={() => handleSave(props.output, props.note.id)} src={transcribe} alt="transcribe" />
       </div>
     </div>
   );

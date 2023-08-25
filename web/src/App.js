@@ -19,6 +19,7 @@ function App() {
     tempNotes.push({
       id: Date.now() + "" + Math.floor(Math.random() * 78),
       text: "",
+      recordText: "",
       time: Date.now(),
       color,
     });
@@ -32,7 +33,6 @@ function App() {
     if (index < 0) return;
 
     tempNotes.splice(index, 1);
-    setOutput('');
     setNotes(tempNotes);
   };
 
@@ -45,6 +45,15 @@ function App() {
     tempNotes[index].text = text;
     setNotes(tempNotes);
   };
+
+  const updateRecordText = (output, id) => {
+    const tempNotes = [...notes];
+    const index = tempNotes.findIndex((item) => item.id === id);
+    if (index < 0) return;
+    tempNotes[index].recordText = output;
+    setOutput('');
+    setNotes(tempNotes);
+  };  
 
   // record voice
   const { status, startRecording, stopRecording, mediaBlobUrl, clearBlobUrl } = useReactMediaRecorder({ audio: true });
@@ -92,6 +101,7 @@ function App() {
           notes={notes}
           deleteNote={deleteNote}
           updateText={updateText}
+          updateRecordText={updateRecordText}
           recordVoice={recordVoice}
           output={output}
           handleSave={handleSave}
@@ -99,18 +109,6 @@ function App() {
       </div>
 
       {/* <button disabled={disabled} onClick={handleSave}>Transcribe</button> */}
-
-      {/* show progress bar when loading model */}
-      {/* <div className='progress-bars-container'>
-        {ready === false && (
-          <label>Loading models... (only run once)</label>
-        )}
-        {progressItems.map(data => (
-          <div key={data.file}>
-            <Progress text={data.file} percentage={data.progress} />
-          </div>
-        ))}
-      </div> */}
     </>
   );
 }
