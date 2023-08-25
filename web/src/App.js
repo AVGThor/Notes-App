@@ -65,17 +65,17 @@ function App() {
     localStorage.setItem("notes-app", JSON.stringify(notes));
   }, [notes]);
 
-  const handleSave = async () => {
+  const handleAudio = async () => {
     const audioBlob = await fetch(mediaBlobUrl).then((r) => r.blob());
     const audioFile = new File([audioBlob], 'voice.wav', { type: 'audio/wav' });
-    const formData = new FormData(); // preparing to send to the server
+    const formData = new FormData();
 
     formData.append('file', audioFile);  // preparing to send to the server
 
-    onSaveAudio(formData); // sending to the server
+    onSendAudio(formData); // sending to the server
   };
 
-  const onSaveAudio = async (formData) => {
+  const onSendAudio = async (formData) => {
     await axios
       .post("http://localhost:5000/", formData, {
         headers: {
@@ -104,11 +104,9 @@ function App() {
           updateRecordText={updateRecordText}
           recordVoice={recordVoice}
           output={output}
-          handleSave={handleSave}
+          handleAudio={handleAudio}
         />
       </div>
-
-      {/* <button disabled={disabled} onClick={handleSave}>Transcribe</button> */}
     </>
   );
 }

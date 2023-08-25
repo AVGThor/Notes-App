@@ -56,8 +56,8 @@ function Note(props) {
     debounce(() => props.updateText(text, id));
   };
 
-  const handleSave = (text, id) => {
-    props.handleSave();
+  const handleAudio = (text, id) => {
+    props.handleAudio();
     props.updateRecordText(text, id);
   }
 
@@ -65,12 +65,12 @@ function Note(props) {
     <div className="note" style={{ backgroundColor: props.note.color }}>
       <textarea
         className="note_text"
-        defaultValue={props.note.text}
-        onChange={(event) => updateText(event.target.value, props.note.id)}
+        defaultValue={props.note.recordText}
       />
       <textarea
         className="note_text"
-        defaultValue={props.note.recordText}
+        defaultValue={props.note.text}
+        onChange={(event) => updateText(event.target.value, props.note.id)}
       />
       <div className="note_footer">
         <p>{formatDate(props.note.time)}</p>
@@ -91,7 +91,7 @@ function Note(props) {
         {props.recordVoice.mediaBlobUrl ? <audio hidden src={props.recordVoice.mediaBlobUrl} controls /* autoPlay loop */ /> : <></>}
         {props.recordVoice.status === 'stopped' && (
           <img style={{ marginRight: '10px' }} onClick={props.recordVoice.clearBlobUrl} src={clear} alt="clear" />)}
-        <img onClick={() => handleSave(props.output, props.note.id)} src={transcribe} alt="transcribe" />
+        <img onClick={() => handleAudio(props.output, props.note.id)} src={transcribe} alt="transcribe" />
       </div>
     </div>
   );

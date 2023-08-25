@@ -31,7 +31,7 @@ function NoteContainer(props) {
               updateRecordText={props.updateRecordText}
               recordVoice={props.recordVoice}
               output={props.output}
-              handleSave={props.handleSave}
+              handleAudio={props.handleAudio}
             />
           ))
         ) : (
