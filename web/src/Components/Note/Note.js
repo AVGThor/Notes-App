@@ -81,23 +81,24 @@ function Note(props) {
           onClick={() => props.deleteNote(props.note.id)}
         />
       </div>
-      <div>
-        <p>{props.recordVoice.status}</p>
-        {props.recordVoice.status == 'idle' && (
+      <div className = "note_footer1">
+        {/* <p hidden>{props.recordVoice.status}</p> */}
+        {props.recordVoice.status === 'idle' && (
           // <button  onClick={props.recordVoice.startRecording}> <img src={start} alt="start_recording" /></button>
-          <img onClick={props.recordVoice.startRecording} src={start} alt="start_recording" />
+          <img style= {{marginRight:'10px'}} onClick={props.recordVoice.startRecording} src={start} alt="start_recording" />
         )}
-        {props.recordVoice.status == 'recording' && (
+        {props.recordVoice.status === 'recording' && (
           // <button onClick={props.recordVoice.stopRecording}><img src={stop} alt="stop_recording" /></button>
-          <img onClick={props.recordVoice.stopRecording} src={stop} alt="stop_recording" />
+          <img style= {{marginRight:'10px'}} onClick={props.recordVoice.stopRecording} src={stop} alt="stop_recording" />
         )}
         {props.recordVoice.mediaBlobUrl ? <audio hidden src={props.recordVoice.mediaBlobUrl} controls /* autoPlay loop */ /> : <></>}
         {/* <audio src={props.recordVoice.mediaBlobUrl} controls /> */}
 
         {/* <button onClick={props.recordVoice.clearBlobUrl}><img src={clear} alt="clear" /></button> */}
-        {props.recordVoice.status === 'stopped' && (<img onClick={props.recordVoice.clearBlobUrl} src={clear} alt="clear" />)}
+        {props.recordVoice.status === 'stopped' && (
+          <img style= {{marginRight:'10px'}} onClick={props.recordVoice.clearBlobUrl} src={clear} alt="clear" /> )}
         {/* <button onClick={() => props.handleSave()}><img src={transcribe} alt="transcribe" /></button> */}
-        <img onClick={() => props.handleSave()} src={transcribe} alt="transcribe" />
+        <img onClick={() => props.handleSave()} src={transcribe} alt="transcribe" /> 
       </div>
     </div>
   );

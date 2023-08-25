@@ -34,6 +34,19 @@
   opacity: 1;
 }
 
-.note1:hover img {
+
+.note_footer1 {
+  display: flex;
+  /* justify-content: start; */
+  align-items: center;
+}
+
+.note_footer1 img {
+  cursor: pointer;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.note:hover .note_footer1 img {
   opacity: 1;
 }
